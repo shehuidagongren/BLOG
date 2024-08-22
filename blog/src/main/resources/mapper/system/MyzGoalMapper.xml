@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MyzGoalMapper">
+    
+    <resultMap type="MyzGoal" id="MyzGoalResult">
+        <result property="id"    column="id"    />
+        <result property="goalName"    column="goal_name"    />
+        <result property="description"    column="description"    />
+        <result property="status"    column="status"    />
+        <result property="goalType"    column="goal_type"    />
+        <result property="goalTag"    column="goal_tag"    />
+        <result property="imageUrl"    column="image_url"    />
+        <result property="websiteUrl"    column="website_url"    />
+        <result property="precondition"    column="precondition"    />
+        <result property="articleId"    column="article_id"    />
+        <result property="orderIndex"    column="order_index"    />
+        <result property="comeTrueData"    column="come_true_data"    />
+        <result property="createdAt"    column="created_at"    />
+    </resultMap>
+
+    <sql id="selectMyzGoalVo">
+        select id, goal_name, description, status, goal_type, goal_tag, image_url, website_url, precondition, article_id, order_index, come_true_data, created_at from myz_goal
+    </sql>
+
+    <select id="selectMyzGoalList" parameterType="MyzGoal" resultMap="MyzGoalResult">
+        <include refid="selectMyzGoalVo"/>
+        <where>  
+            <if test="goalName != null  and goalName != ''"> and goal_name like concat('%', #{goalName}, '%')</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="goalType != null "> and goal_type = #{goalType}</if>
+            <if test="goalTag != null "> and goal_tag = #{goalTag}</if>
+            <if test="params.beginComeTrueData != null and params.beginComeTrueData != '' and params.endComeTrueData != null and params.endComeTrueData != ''"> and come_true_data between #{params.beginComeTrueData} and #{params.endComeTrueData}</if>
+        </where>
+    </select>
+    
+    <select id="selectMyzGoalById" parameterType="Long" resultMap="MyzGoalResult">
+        <include refid="selectMyzGoalVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMyzGoal" parameterType="MyzGoal" useGeneratedKeys="true" keyProperty="id">
+        insert into myz_goal
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="goalName != null and goalName != ''">goal_name,</if>
+            <if test="description != null and description != ''">description,</if>
+            <if test="status != null">status,</if>
+            <if test="goalType != null">goal_type,</if>
+            <if test="goalTag != null">goal_tag,</if>
+            <if test="imageUrl != null">image_url,</if>
+            <if test="websiteUrl != null">website_url,</if>
+            <if test="precondition != null">precondition,</if>
+            <if test="articleId != null">article_id,</if>
+            <if test="orderIndex != null">order_index,</if>
+            <if test="comeTrueData != null">come_true_data,</if>
+            created_at,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="goalName != null and goalName != ''">#{goalName},</if>
+            <if test="description != null and description != ''">#{description},</if>
+            <if test="status != null">#{status},</if>
+            <if test="goalType != null">#{goalType},</if>
+            <if test="goalTag != null">#{goalTag},</if>
+            <if test="imageUrl != null">#{imageUrl},</if>
+            <if test="websiteUrl != null">#{websiteUrl},</if>
+            <if test="precondition != null">#{precondition},</if>
+            <if test="articleId != null">#{articleId},</if>
+            <if test="orderIndex != null">#{orderIndex},</if>
+            <if test="comeTrueData != null">#{comeTrueData},</if>
+            sysdate(),
+         </trim>
+    </insert>
+
+    <update id="updateMyzGoal" parameterType="MyzGoal">
+        update myz_goal
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="goalName != null and goalName != ''">goal_name = #{goalName},</if>
+            <if test="description != null and description != ''">description = #{description},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="goalType != null">goal_type = #{goalType},</if>
+            <if test="goalTag != null">goal_tag = #{goalTag},</if>
+            <if test="imageUrl != null">image_url = #{imageUrl},</if>
+            <if test="websiteUrl != null">website_url = #{websiteUrl},</if>
+            <if test="precondition != null">precondition = #{precondition},</if>
+            <if test="articleId != null">article_id = #{articleId},</if>
+            <if test="orderIndex != null">order_index = #{orderIndex},</if>
+            <if test="comeTrueData != null">come_true_data = #{comeTrueData},</if>
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMyzGoalById" parameterType="Long">
+        delete from myz_goal where id = #{id}
+    </delete>
+
+    <delete id="deleteMyzGoalByIds" parameterType="String">
+        delete from myz_goal where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

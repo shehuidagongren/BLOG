@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MyzArticlesMapper">
+    
+    <resultMap type="MyzArticles" id="MyzArticlesResult">
+        <result property="id"    column="id"    />
+        <result property="articleTitle"    column="article_title"    />
+        <result property="articleContent"    column="article_content"    />
+        <result property="articleAuthorId"    column="article_author_id"    />
+        <result property="articleType"    column="article_type"    />
+        <result property="articleTag"    column="article_tag"    />
+        <result property="articleDirection"    column="article_direction"    />
+        <result property="articleComments"    column="article_comments"    />
+        <result property="articleLikes"    column="article_likes"    />
+        <result property="articleViews"    column="article_views"    />
+        <result property="seoTitle"    column="seo_title"    />
+        <result property="seoDescription"    column="seo_description"    />
+        <result property="coverImage"    column="cover_image"    />
+        <result property="sourceLink"    column="source_link"    />
+        <result property="allowComments"    column="allow_comments"    />
+        <result property="articleStatus"    column="article_status"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="articleCreatedAt"    column="article_created_at"    />
+        <result property="articleUpdatedAt"    column="article_updated_at"    />
+    </resultMap>
+
+    <sql id="selectMyzArticlesVo">
+        select id, article_title, article_content, article_author_id, article_type, article_tag, article_direction, article_comments, article_likes, article_views, seo_title, seo_description, cover_image, source_link, allow_comments, article_status, del_flag, article_created_at, article_updated_at from myz_articles
+    </sql>
+
+    <select id="selectMyzArticlesList" parameterType="MyzArticles" resultMap="MyzArticlesResult">
+        <include refid="selectMyzArticlesVo"/>
+        <where>  
+            <if test="articleTitle != null  and articleTitle != ''"> and article_title like concat('%', #{articleTitle}, '%')</if>
+            <if test="articleType != null "> and article_type = #{articleType}</if>
+            <if test="articleTag != null "> and article_tag = #{articleTag}</if>
+            <if test="articleDirection != null "> and article_direction = #{articleDirection}</if>
+            <if test="articleLikes != null "> and article_likes &gt;= #{articleLikes}</if>
+            <if test="articleViews != null "> and article_views &gt;= #{articleViews}</if>
+            <if test="seoTitle != null  and seoTitle != ''"> and seo_title like concat('%', #{seoTitle}, '%')</if>
+            <if test="seoDescription != null  and seoDescription != ''"> and seo_description like concat('%', #{seoDescription}, '%')</if>
+            <if test="allowComments != null "> and allow_comments = #{allowComments}</if>
+            <if test="articleStatus != null "> and article_status = #{articleStatus}</if>
+            <if test="articleCreatedAt != null "> and article_created_at = #{articleCreatedAt}</if>
+        </where>
+    </select>
+    
+    <select id="selectMyzArticlesById" parameterType="Long" resultMap="MyzArticlesResult">
+        <include refid="selectMyzArticlesVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMyzArticles" parameterType="MyzArticles" useGeneratedKeys="true" keyProperty="id">
+        insert into myz_articles
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleTitle != null and articleTitle != ''">article_title,</if>
+            <if test="articleContent != null and articleContent != ''">article_content,</if>
+            <if test="articleAuthorId != null">article_author_id,</if>
+            <if test="articleType != null">article_type,</if>
+            <if test="articleTag != null">article_tag,</if>
+            <if test="articleDirection != null">article_direction,</if>
+            <if test="articleComments != null">article_comments,</if>
+            <if test="articleLikes != null">article_likes,</if>
+            <if test="articleViews != null">article_views,</if>
+            <if test="seoTitle != null">seo_title,</if>
+            <if test="seoDescription != null">seo_description,</if>
+            <if test="coverImage != null">cover_image,</if>
+            <if test="sourceLink != null">source_link,</if>
+            <if test="allowComments != null">allow_comments,</if>
+            <if test="articleStatus != null">article_status,</if>
+            del_flag,
+            article_created_at,
+            article_updated_at,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleTitle != null and articleTitle != ''">#{articleTitle},</if>
+            <if test="articleContent != null and articleContent != ''">#{articleContent},</if>
+            <if test="articleAuthorId != null">#{articleAuthorId},</if>
+            <if test="articleType != null">#{articleType},</if>
+            <if test="articleTag != null">#{articleTag},</if>
+            <if test="articleDirection != null">#{articleDirection},</if>
+            <if test="articleComments != null">#{articleComments},</if>
+            <if test="articleLikes != null">#{articleLikes},</if>
+            <if test="articleViews != null">#{articleViews},</if>
+            <if test="seoTitle != null">#{seoTitle},</if>
+            <if test="seoDescription != null">#{seoDescription},</if>
+            <if test="coverImage != null">#{coverImage},</if>
+            <if test="sourceLink != null">#{sourceLink},</if>
+            <if test="allowComments != null">#{allowComments},</if>
+            <if test="articleStatus != null">#{articleStatus},</if>
+            0,
+            sysdate(),
+            sysdate(),
+         </trim>
+    </insert>
+
+    <update id="updateMyzArticles" parameterType="MyzArticles">
+        update myz_articles
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="articleTitle != null and articleTitle != ''">article_title = #{articleTitle},</if>
+            <if test="articleContent != null and articleContent != ''">article_content = #{articleContent},</if>
+            <if test="articleAuthorId != null">article_author_id = #{articleAuthorId},</if>
+            <if test="articleType != null">article_type = #{articleType},</if>
+            <if test="articleTag != null">article_tag = #{articleTag},</if>
+            <if test="articleDirection != null">article_direction = #{articleDirection},</if>
+            <if test="articleComments != null">article_comments = #{articleComments},</if>
+            <if test="articleLikes != null">article_likes = #{articleLikes},</if>
+            <if test="articleViews != null">article_views = #{articleViews},</if>
+            <if test="seoTitle != null">seo_title = #{seoTitle},</if>
+            <if test="seoDescription != null">seo_description = #{seoDescription},</if>
+            <if test="coverImage != null">cover_image = #{coverImage},</if>
+            <if test="sourceLink != null">source_link = #{sourceLink},</if>
+            <if test="allowComments != null">allow_comments = #{allowComments},</if>
+            <if test="articleStatus != null">article_status = #{articleStatus},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="articleCreatedAt != null">article_created_at = #{articleCreatedAt},</if>
+            article_updated_at = sysdate(),
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMyzArticlesById" parameterType="Long">
+        delete from myz_articles where id = #{id}
+    </delete>
+
+    <delete id="deleteMyzArticlesByIds" parameterType="String">
+        delete from myz_articles where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

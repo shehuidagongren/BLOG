@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MyzToolboxMapper">
+    
+    <resultMap type="MyzToolbox" id="MyzToolboxResult">
+        <result property="id"    column="id"    />
+        <result property="toolName"    column="tool_name"    />
+        <result property="description"    column="description"    />
+        <result property="imageUrl"    column="image_url"    />
+        <result property="linkUrl"    column="link_url"    />
+        <result property="type"    column="type"    />
+        <result property="orderIndex"    column="order_index"    />
+        <result property="userId"    column="user_id"    />
+        <result property="createdAt"    column="created_at"    />
+    </resultMap>
+
+    <sql id="selectMyzToolboxVo">
+        select id, tool_name, description, image_url, link_url, type, order_index, user_id, created_at from myz_toolbox
+    </sql>
+
+    <select id="selectMyzToolboxList" parameterType="MyzToolbox" resultMap="MyzToolboxResult">
+        <include refid="selectMyzToolboxVo"/>
+        <where>  
+            <if test="toolName != null  and toolName != ''"> and tool_name like concat('%', #{toolName}, '%')</if>
+            <if test="type != null "> and type = #{type}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+        </where>
+    </select>
+    
+    <select id="selectMyzToolboxById" parameterType="Long" resultMap="MyzToolboxResult">
+        <include refid="selectMyzToolboxVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMyzToolbox" parameterType="MyzToolbox" useGeneratedKeys="true" keyProperty="id">
+        insert into myz_toolbox
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="toolName != null and toolName != ''">tool_name,</if>
+            <if test="description != null">description,</if>
+            <if test="imageUrl != null">image_url,</if>
+            <if test="linkUrl != null and linkUrl != ''">link_url,</if>
+            <if test="type != null">type,</if>
+            <if test="orderIndex != null">order_index,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="createdAt != null">created_at,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="toolName != null and toolName != ''">#{toolName},</if>
+            <if test="description != null">#{description},</if>
+            <if test="imageUrl != null">#{imageUrl},</if>
+            <if test="linkUrl != null and linkUrl != ''">#{linkUrl},</if>
+            <if test="type != null">#{type},</if>
+            <if test="orderIndex != null">#{orderIndex},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="createdAt != null">#{createdAt},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMyzToolbox" parameterType="MyzToolbox">
+        update myz_toolbox
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="toolName != null and toolName != ''">tool_name = #{toolName},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="imageUrl != null">image_url = #{imageUrl},</if>
+            <if test="linkUrl != null and linkUrl != ''">link_url = #{linkUrl},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="orderIndex != null">order_index = #{orderIndex},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMyzToolboxById" parameterType="Long">
+        delete from myz_toolbox where id = #{id}
+    </delete>
+
+    <delete id="deleteMyzToolboxByIds" parameterType="String">
+        delete from myz_toolbox where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

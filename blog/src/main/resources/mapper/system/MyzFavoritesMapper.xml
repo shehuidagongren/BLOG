@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MyzFavoritesMapper">
+    
+    <resultMap type="MyzFavorites" id="MyzFavoritesResult">
+        <result property="id"    column="id"    />
+        <result property="title"    column="title"    />
+        <result property="description"    column="description"    />
+        <result property="url"    column="url"    />
+        <result property="author"    column="author"    />
+        <result property="notes"    column="notes"    />
+        <result property="articleType"    column="article_type"    />
+        <result property="articleTag"    column="article_tag"    />
+        <result property="articleDirection"    column="article_direction"    />
+        <result property="articleStatus"    column="article_status"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="favoriteDate"    column="favorite_date"    />
+        <result property="articleUpdatedAt"    column="article_updated_at"    />
+    </resultMap>
+
+    <sql id="selectMyzFavoritesVo">
+        select id, title, description, url, author, notes, article_type, article_tag, article_direction, article_status, del_flag, favorite_date, article_updated_at from myz_favorites
+    </sql>
+
+    <select id="selectMyzFavoritesList" parameterType="MyzFavorites" resultMap="MyzFavoritesResult">
+        <include refid="selectMyzFavoritesVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="author != null  and author != ''"> and author like concat('%', #{author}, '%')</if>
+            <if test="articleType != null "> and article_type = #{articleType}</if>
+            <if test="articleTag != null "> and article_tag = #{articleTag}</if>
+            <if test="articleDirection != null "> and article_direction = #{articleDirection}</if>
+            <if test="articleStatus != null "> and article_status = #{articleStatus}</if>
+            <if test="favoriteDate != null "> and favorite_date = #{favoriteDate}</if>
+            <if test="articleUpdatedAt != null "> and article_updated_at = #{articleUpdatedAt}</if>
+        </where>
+    </select>
+    
+    <select id="selectMyzFavoritesById" parameterType="Long" resultMap="MyzFavoritesResult">
+        <include refid="selectMyzFavoritesVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertMyzFavorites" parameterType="MyzFavorites" useGeneratedKeys="true" keyProperty="id">
+        insert into myz_favorites
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null and title != ''">title,</if>
+            <if test="description != null">description,</if>
+            <if test="url != null and url != ''">url,</if>
+            <if test="author != null">author,</if>
+            <if test="notes != null">notes,</if>
+            <if test="articleType != null">article_type,</if>
+            <if test="articleTag != null">article_tag,</if>
+            <if test="articleDirection != null">article_direction,</if>
+            <if test="articleStatus != null">article_status,</if>
+            del_flag,
+            favorite_date,
+            article_updated_at,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="description != null">#{description},</if>
+            <if test="url != null and url != ''">#{url},</if>
+            <if test="author != null">#{author},</if>
+            <if test="notes != null">#{notes},</if>
+            <if test="articleType != null">#{articleType},</if>
+            <if test="articleTag != null">#{articleTag},</if>
+            <if test="articleDirection != null">#{articleDirection},</if>
+            <if test="articleStatus != null">#{articleStatus},</if>
+            0,
+            sysdate(),
+            sysdate(),
+         </trim>
+    </insert>
+
+    <update id="updateMyzFavorites" parameterType="MyzFavorites">
+        update myz_favorites
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="url != null and url != ''">url = #{url},</if>
+            <if test="author != null">author = #{author},</if>
+            <if test="notes != null">notes = #{notes},</if>
+            <if test="articleType != null">article_type = #{articleType},</if>
+            <if test="articleTag != null">article_tag = #{articleTag},</if>
+            <if test="articleDirection != null">article_direction = #{articleDirection},</if>
+            <if test="articleStatus != null">article_status = #{articleStatus},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="favoriteDate != null">favorite_date = #{favoriteDate},</if>
+            article_updated_at = sysdate(),
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMyzFavoritesById" parameterType="Long">
+        delete from myz_favorites where id = #{id}
+    </delete>
+
+    <delete id="deleteMyzFavoritesByIds" parameterType="String">
+        delete from myz_favorites where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
