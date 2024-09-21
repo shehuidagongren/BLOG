@@ -26,7 +26,7 @@
                      <h3 class="tool-name">{{ getToolTypeLabel(type) }}</h3>
                      <el-card style="background: rgba(0, 0, 0, 0.2);">
                        <div class="toolbox-container">
-                         <el-card v-for="(tool, index) in tools" :key="index" class="tool-card" shadow="hover" style=";border-color:rgba(255,255, 255, 0) ;">
+                         <el-card v-for="(tool, index) in tools" :key="index" class="tool-card" shadow="hover" style="border-color:rgba(255, 255, 255, 0) ;">
                            <template>
                              <a :href="tool.linkUrl" target="_blank">
                                <div>
@@ -145,6 +145,10 @@ export default {
 </script>
 
 <style scoped>
+.app-container{
+    margin-left: 10%;
+}
+
 .no-preview {
   pointer-events: none; /* 禁用点击事件 */
 }

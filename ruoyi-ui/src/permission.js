@@ -10,13 +10,15 @@ NProgress.configure({ showSpinner: false })
 
 const whiteList = ['/login', '/register',
 '/welcome','/blog','/newFunction',
-  '/articleHome',  '/dailyArticle',  '/allArticle',  '/collectArticles',  '/writeArticle',  '/articleParticular','/favoriteParticular',
+  '/articleHome',  '/dailyArticle',  '/allArticle',  '/collectArticles',  '/writeArticle',  '/articleParticular','/favoriteParticular','/messageBoard',
   '/careerHome',  '/lifeJourney',  '/photography',  '/commemorate',
   '/homeHome',  '/entertainment',  '/toolCabinet',
    '/socialContactHome',  '/leetcode',  '/questionAnswering' , '/technologySharing',  '/userManagement',
-  '/starrySkyHome',  '/laboratory',
-  '/wayHome',  '/studyDiary',  '/studyGoal',
-  '/milestoneHome',  '/aboutBlog',  '/updateBlog',  '/cooperation']
+  '/starrySkyHome',  '/laboratory','/musicBox',
+  '/wayHome',  '/studyDiary',  '/studyGoal','/masterTechnique',
+  '/milestoneHome',  '/aboutBlog',  '/updateBlog',  '/cooperation',
+  '/test'
+]
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
@@ -55,7 +57,7 @@ router.beforeEach((to, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
-      next(`/login?redirect=${encodeURIComponent(to.fullPath)}`) // 否则全部重定向到登录页
+      next(`/welcome?redirect=${encodeURIComponent(to.fullPath)}`) // 否则全部重定向到登录页
       NProgress.done()
     }
   }

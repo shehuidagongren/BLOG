@@ -8,15 +8,20 @@
                 <el-button type="text" class="button"><router-link to="/homeHome"> <span class="name">山有木兮木有枝</span></router-link></el-button>
 
                 </div>
+
             </div>
             </el-card>
-
+            <div class="el-login-footer">
+      <p>ICP备案/许可证号：<a href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2023010996号-2</a></p>
+      <p><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=53233102000065" >
+        <img src="../../assets/icons/备案编号图标.png" style=""/>滇公网安备53233102000065号</a></p>
+      <p> Copyright © 2024 shanyoumuxi</p>
+    </div>
         <el-carousel   class="el-carousel" :height="screenheight" trigger="click" :interval="3000">
       <el-carousel-item v-for="item in 4" :key="item">
         <h3>{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>
-
 
     </el-main>
   </el-container>
@@ -114,6 +119,19 @@ export default {
   }
   .el-carousel{
     width: 100%
+  }
+
+  .el-login-footer {
+    z-index: 10;
+    height: 100px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-family: Arial;
+    font-size: 12px;
+    letter-spacing: 1px;
   }
 </style>
 

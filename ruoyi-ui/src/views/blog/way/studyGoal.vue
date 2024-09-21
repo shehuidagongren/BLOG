@@ -191,3 +191,9 @@
     }
   };
 </script>
+
+<style scoped>
+.app-container {
+  margin-left: 10%;
+}
+</style>

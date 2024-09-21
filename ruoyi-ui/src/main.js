@@ -37,6 +37,14 @@ import DictTag from '@/components/DictTag'
 import VueMeta from 'vue-meta'
 // 字典数据组件
 import DictData from '@/components/DictData'
+// vue中使用vue-particles动态粒子蜘蛛网背景 
+import VueParticles from 'vue-particles'
+// 引入 Vue 自定义指令集
+import DragSwitch from "@/utils/diyVueDirectives/diyVueDirectives"
+
+
+Vue.use(VueParticles)
+ 
 
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts

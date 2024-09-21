@@ -16,15 +16,14 @@ public class RuoYiApplication
     {
         // System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(RuoYiApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  若依启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
-                " .-------.       ____     __        \n" +
-                " |  _ _   \\      \\   \\   /  /    \n" +
-                " | ( ' )  |       \\  _. /  '       \n" +
-                " |(_ o _) /        _( )_ .'         \n" +
-                " | (_,_).' __  ___(_ o _)'          \n" +
-                " |  |\\ \\  |  ||   |(_,_)'         \n" +
-                " |  | \\ `'   /|   `-'  /           \n" +
-                " |  |  \\    /  \\      /           \n" +
-                " ''-'   `'-'    `-..-'              ");
+        System.out.println("(♥◠‿◠)ﾉﾞ  木有枝·编程技术分享系统启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
+                " ____  _             \n" +
+                "|  _ \\| |            \n" +
+                "| |_) | | ___   __ _ \n" +
+                "|  _ <| |/ _ \\ / _` |\n" +
+                "| |_) | | (_) | (_| |\n" +
+                "|____/|_|\\___/ \\__, |\n" +
+                "                __/ |\n" +
+                "               |___/ \n. ");
     }
 }

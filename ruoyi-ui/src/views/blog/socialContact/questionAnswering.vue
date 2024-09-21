@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h2>问题互答</h2>
     </div>
 </template>
@@ -21,5 +21,7 @@ export default {
 
 </script>
 <style>
-
+.container {
+    margin-left: 10%;
+}
 </style>

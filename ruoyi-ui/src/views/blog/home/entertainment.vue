@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h2>娱乐-木有枝</h2>
     
     </div>
@@ -22,5 +22,8 @@ export default {
 
 </script>
 <style>
-
+.container{
+    margin-left: 10%;
+    
+}
 </style>

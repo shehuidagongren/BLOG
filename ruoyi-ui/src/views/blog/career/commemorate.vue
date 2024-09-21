@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h2>里程碑</h2>
         <el-timeline style="margin:auto 50px;">
             <el-timeline-item timestamp="步骤一" placement="top">
@@ -39,5 +39,7 @@ export default {
 
 </script>
 <style>
-
+.container {
+    margin-left: 10%;
+}
 </style>

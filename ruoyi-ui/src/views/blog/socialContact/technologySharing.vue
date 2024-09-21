@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h2>干货分享</h2>
        
     </div>
@@ -22,5 +22,7 @@ export default {
 
 </script>
 <style>
-
+.container {
+    margin-left: 10%;
+}
 </style>

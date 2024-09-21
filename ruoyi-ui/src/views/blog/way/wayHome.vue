@@ -57,7 +57,7 @@ export default {
 /* 主要布局 */
 .mainPage{
     padding: 20px;
-    
+    margin-left:10%;
 }
 
 /* 左布局 */

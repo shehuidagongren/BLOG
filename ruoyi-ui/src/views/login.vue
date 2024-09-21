@@ -50,16 +50,18 @@
       </el-form>
     </el-row>
     </el-row>
-
-
     <div class="login-division"></div>
 
     <div class="login-division"></div>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>版权所有©：木有枝博客系统 (滇ICP备110120119号)</span>
+      <p>ICP备案/许可证号：<a href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2023010996号-2</a></p>
+      <p><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=53233102000065" >
+        <img src="../assets/icons/备案编号图标.png" style=""/>滇公网安备53233102000065号</a></p>
+
+      <p> Copyright © 2024 shanyoumuxi</p>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -257,8 +259,8 @@
   }
 
   .el-login-footer {
-    height: 40px;
-    line-height: 40px;
+    height: 100px;
+    // line-height: 40px;
     position: fixed;
     bottom: 0;
     width: 100%;

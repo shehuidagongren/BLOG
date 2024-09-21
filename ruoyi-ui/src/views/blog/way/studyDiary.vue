@@ -52,8 +52,7 @@ export default {
 <style scoped>
 /* 主要布局 */
 .mainPage{
-    padding: 20px;
-    
+    margin-left:10%;
 }
 
 /* 左布局 */
@@ -74,7 +73,7 @@ export default {
     float: right;
     position: relative;
     margin-right:5% ;
-    margin-top:3% ;
+ 
     width: 15%;
 }
 
@@ -83,11 +82,5 @@ export default {
     margin-bottom: 50px;
     float: block;
 }
-
-
-/* 主要区域 */
-p {
-    margin: 8px;
-}
-
+ 
 </style>

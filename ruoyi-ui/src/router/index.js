@@ -94,6 +94,11 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: '/test',
+    component: () => import('@/views/blog/test/index.vue'),
+    hidden: true
+  },
+  {
     path: '/blog',
     component: () => import('@/views/blog/menu'),
     hidden: true,
@@ -125,9 +130,9 @@ export const constantRoutes = [
         component: () => import('@/views/blog/article/collectArticles.vue')
       },
       {
-        path: '/writeArticle',
-        name: 'writeArticle',
-        component: () => import('@/views/blog/article/writeArticle.vue')
+        path: '/messageBoard',
+        name: 'messageBoard',
+        component: () => import('@/views/blog/article/messageBoard.vue')
       },
       {
         path: '/articleParticular',
@@ -214,6 +219,11 @@ export const constantRoutes = [
         name: 'laboratory',
         component: () => import('@/views/blog/starrySky/laboratory.vue')
       },
+      {
+        path: '/musicBox',
+        name: 'musicBox',
+        component: () => import('@/views/blog/starrySky/musicBox.vue')
+      },
       // 其修远兮
       {
         path: '/wayHome',
@@ -228,6 +238,10 @@ export const constantRoutes = [
         path: '/studyGoal',
         name: 'studyGoal',
         component: () => import('@/views/blog/way/studyGoal.vue')
+      },{
+        path: '/masterTechnique',
+        name: 'masterTechnique',
+        component: () => import('@/views/blog/way/masterTechnique.vue')
       },
 
 
@@ -252,11 +266,6 @@ export const constantRoutes = [
         name: 'cooperation',
         component: () => import('@/views/blog/milestone/cooperation.vue')
       },
-
-
-
-
-
     ]
   },
 ]

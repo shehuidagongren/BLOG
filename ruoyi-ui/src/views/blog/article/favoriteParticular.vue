@@ -13,10 +13,11 @@
                 <img src="@/assets/blogIcon/author.svg" width="20px" height="20px" alt="作者">
                 文章作者：{{form.author}}
               </el-col>
-              <el-col :span="16">
-                <img src="@/assets/blogIcon/author.svg" width="20px" height="20px" alt="作者">
-                文章URL:{{form.url}}
-              </el-col>
+              <!-- <el-col :span="16">
+                <a :href="form.url">
+                  <img src="@/assets/blogIcon/author.svg" width="20px" height="20px" alt="作者">
+                  链接直达</a>
+              </el-col> -->
             </el-row>
             <el-row style="font-size: 18px;font-weight: bold;">
               <el-col :span="16">
@@ -43,6 +44,18 @@
 
 
           </el-row>
+          
+          <el-row style="font-size: 18px;font-weight: bold;">
+              <el-col :span="8">
+                预览
+              </el-col>
+              <el-col :span="16">
+                <a :href="form.url" target="_blank">
+                  <img src="@/assets/blogIcon/author.svg" width="20px" height="20px" alt="作者">
+                  链接直达</a>
+              </el-col>
+            </el-row>
+          <iframe :src="form.url" width="100%" height="600px"></iframe>
           <el-card>
             {{form.notes}}
           </el-card>
@@ -118,7 +131,7 @@
           </el-button>
         </el-card>
   </div>
-  </div>
+ 
 </template>
 
 <script>
@@ -149,6 +162,7 @@
         toolOpen: false,
         replyingTo: null, // Track who is being replied to
         comments: [], // 存储从数据库获取的评论数据
+        iframeHeight: '300px', // 初始高度
         newComment: {
           userId: null, // 用户ID，如果是登录用户则非null
           userName: '', // 用户名
@@ -268,6 +282,7 @@
       setReplyingTo(comment) {
         this.replyingTo = comment.userName; // 显示正在回复的用户名
         this.newComment.parentCommentId = comment.commentId; // 设置被回复的评论ID
+        this.tool();
         // this.$refs.commentInput.focus(); // 聚焦到输入框
       },
       tool() {

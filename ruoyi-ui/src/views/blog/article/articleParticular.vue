@@ -53,10 +53,10 @@
               <img src="@/assets/blogIcon/view.svg" width="20px" height="20px" alt="浏览量">
               {{form.articleViews}}
             </el-col>
-            <el-col :span="8">
+            <!-- <el-col :span="8">
               <img src="@/assets/blogIcon/like.svg" width="20px" height="20px" alt="点赞量">
               {{form.articleLikes}}
-            </el-col>
+            </el-col> -->
           </el-row>
         </el-card>
 

@@ -396,8 +396,7 @@ export default {
 
 /* 主要布局 */
 .mainPage{
-    padding: 10px;
-
+    margin-left: 10%;
 }
 
 /* 左布局 */
