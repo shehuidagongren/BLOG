@@ -49,7 +49,7 @@ export default {
 <style scoped>
 /* 主要布局 */
 .mainPage{
-    padding: 20px;
+    margin-left: 10%;
     
 }
 

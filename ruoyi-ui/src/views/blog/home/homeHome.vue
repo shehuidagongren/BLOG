@@ -307,13 +307,7 @@
 <style scoped>
 /* CSS 样式 */
 
-@font-face {
-    font-family: "a";
-    /*中文字体  */
-    src: url();
-    font-display: swap;
-}
-
+ 
 
 @font-face {
     font-family: "b";

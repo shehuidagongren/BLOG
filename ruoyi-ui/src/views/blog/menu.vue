@@ -44,25 +44,25 @@
               </div>
             </div>
             <ul class="menu-list">
-              <li v-show="activeIndex==1" v-for="caidan in menuItems.starrySkyHome" :key="caidan.icon"   @click="goto(caidan.urlname)">
+              <li v-show="activeIndex==1" v-for="caidan in menuItems.starrySkyHome"    @click="goto(caidan.urlname)">
                 <i :class="caidan.icon"></i><span>{{ caidan.name }}</span>
               </li>
-              <li v-show="activeIndex==2" v-for="caidan in menuItems.socialContactHome" :key="caidan.icon"   @click="goto(caidan.urlname)">
+              <li v-show="activeIndex==2" v-for="caidan in menuItems.socialContactHome"  @click="goto(caidan.urlname)">
                 <i :class="caidan.icon"></i><span>{{ caidan.name }}</span>
               </li>
-              <li v-show="activeIndex==3" v-for="caidan in menuItems.careerHome" :key="caidan.icon"   @click="goto(caidan.urlname)">
+              <li v-show="activeIndex==3" v-for="caidan in menuItems.careerHome"   @click="goto(caidan.urlname)">
                 <i :class="caidan.icon"></i><span>{{ caidan.name }}</span>
               </li>
-              <li v-show="activeIndex==4" v-for="caidan in menuItems.homeHome" :key="caidan.icon"   @click="goto(caidan.urlname)">
+              <li v-show="activeIndex==4" v-for="caidan in menuItems.homeHome"  @click="goto(caidan.urlname)">
                 <i :class="caidan.icon"></i><span>{{ caidan.name }}</span>
               </li>
-              <li v-show="activeIndex==5" v-for="caidan in menuItems.articleHome" :key="caidan.icon"   @click="goto(caidan.urlname)">
+              <li v-show="activeIndex==5" v-for="caidan in menuItems.articleHome"  @click="goto(caidan.urlname)">
                 <i :class="caidan.icon"></i><span>{{ caidan.name }}</span>
               </li>
-              <li v-show="activeIndex==6" v-for="caidan in menuItems.wayHome" :key="caidan.icon"   @click="goto(caidan.urlname)">
+              <li v-show="activeIndex==6" v-for="caidan in menuItems.wayHome"  @click="goto(caidan.urlname)">
                 <i :class="caidan.icon"></i><span>{{ caidan.name }}</span>
               </li>
-              <li v-show="activeIndex==7" v-for="caidan in menuItems.milestoneHome" :key="caidan.icon"   @click="goto(caidan.urlname)">
+              <li v-show="activeIndex==7" v-for="caidan in menuItems.milestoneHome"  @click="goto(caidan.urlname)">
                 <i :class="caidan.icon"></i><span>{{ caidan.name }}</span>
               </li>
             </ul>
@@ -76,7 +76,6 @@
 
     <!-- 内容主体区域 -->
     <el-main>
-        <!-- <live2d/> -->
           <!-- 路由占位符 -->
                    <router-view ></router-view>
       </el-main>
@@ -139,12 +138,11 @@
 </template>
 
 <script>
-import Live2d from '@/components/Live2d/index'
 // import { listNotice } from "@/api/system/notice";
 export default {
   name: 'Menu',
   components: {
-    Live2d
+ 
   },
   // 注册自定义拖拽指令
   directives: {

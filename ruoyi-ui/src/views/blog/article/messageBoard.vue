@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
  
  
       <div  >
@@ -228,7 +228,9 @@
 
 <style>
   /* 你的样式 */
-
+  .container{
+    margin-left: 10%;
+  }
   .shared-comment-box {
     position: fixed;
     bottom: 20%;

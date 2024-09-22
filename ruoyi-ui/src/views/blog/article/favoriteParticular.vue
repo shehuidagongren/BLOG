@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="conntainer">
     <div v-if="loading">加载中...</div>
     <div v-else>
       <div v-if="articleId">
@@ -106,7 +106,7 @@
                 </el-col>
                 <el-col :span="8">
                       <el-button size="medium" @click="sendComment" type="primary" :disabled="!isCommentValid"
-                        style="min-width: 100px; width: 30%; height: 40px;margin-left: 10%; margin-top: 10px;">
+                        style="min-width: 100px; width: 30%; height: 40px;margin-left: 5%; margin-top: 10px;">
                         发表评论
                       </el-button>
                       <el-button size="medium" @click="toolfalse" type="warning"
@@ -308,9 +308,15 @@
 
 <style>
   /* 你的样式 */
+.conntainer{
+  margin-left: 12%;
+  width: 80%;
+}
+
 
   .shared-comment-box {
     position: fixed;
+    right: 140px;
     bottom: 20%;
     width: 70%;
     background-color: white;
@@ -334,7 +340,7 @@
   .tool {
     background: rgba(255, 255, 255, 0.7);
     position: fixed;
-    left: 10%;
+    right:0;
     bottom: 27%;
   }
 </style>

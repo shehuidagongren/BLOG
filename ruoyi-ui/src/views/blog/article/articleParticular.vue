@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="containner">
     <div v-if="loading">加载中...</div>
     <div v-else>
       <div v-if="articleId">
@@ -304,11 +304,16 @@
 
 <style scoped>
   /* 你的样式 */
+.containner{
+  margin-left: 12%;
+  width: 80%;
+}
 
   .shared-comment-box {
     position: fixed;
+    right: 140px;
     bottom: 20%;
-    width: 70%;
+    width: 60%;
     background-color: white;
     padding: 10px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
@@ -330,7 +335,7 @@
   .tool {
     background: rgba(255, 255, 255, 0.7);
     position: fixed;
-    left: 10%;
+    right: 0;
     bottom: 27%;
   }
 </style>

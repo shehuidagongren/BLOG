@@ -7,9 +7,10 @@
 
 <script>
 import ThemePicker from "@/components/ThemePicker";
+
 export default {
   name: "App",
-  components: { ThemePicker},
+  components: { ThemePicker },
   metaInfo() {
     return {
       title: this.$store.state.settings.dynamicTitle && this.$store.state.settings.title,

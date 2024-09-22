@@ -193,7 +193,6 @@
  
       <!-- 内容主体区域 -->
       <el-main style="min-height: 100%; padding: 0;margin: 0 ;z-index: 1;">
-        <!-- <live2d/> -->
           <!-- 路由占位符 -->
                    <router-view ></router-view>
       </el-main>
@@ -252,12 +251,10 @@
 </template>
 
 <script>
-import Live2d from '@/components/Live2d/index'
   // import { listNotice } from "@/api/system/notice";
 export default {
   name: 'Menu',
   components: {
-      Live2d
   },
   data () {
     return {

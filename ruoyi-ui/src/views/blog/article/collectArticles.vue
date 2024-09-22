@@ -45,7 +45,7 @@
       </el-form>
     </el-card>
 
-    <el-card style="width: 75%;background: rgba(255, 255, 255, 0);">
+    <el-card  v-loading="loading" style="width: 75%;background: rgba(255, 255, 255, 0);">
       <router-link v-for="(article, index) in favoritesList" :key="index" :to="{ name: 'favoriteParticular',
        query: {  articleId: article.id  }}">
         <el-card style="background: rgba(255, 255, 255, 0.5); margin-bottom: 10px; cursor: pointer; " shadow="hover">
@@ -140,14 +140,24 @@
     },
     methods: {
       /** 查询文章列表 */
+
       getList() {
-        this.loading = true;
-        listFavorites(this.queryParams).then(response => {
+      this.loading = true;
+      listFavorites(this.queryParams).then(response => {
+        try {
           this.favoritesList = response.rows;
           this.total = response.total;
-          this.loading = false;
-        });
-      },
+        } catch (error) {
+          console.error('Error processing response:', error);
+          // 处理错误，例如显示错误消息
+        }
+      }).catch(error => {
+        console.error('Error fetching articles:', error);
+        // 处理请求错误，例如显示错误消息
+      }).finally(() => {
+        this.loading = false;
+      });
+    },
       // 取消按钮
       cancel() {
         this.reset();
@@ -167,5 +177,7 @@
 </script>
 
 <style scoped>
-
+.app-container{
+  margin-left: 10%;
+}
 </style>

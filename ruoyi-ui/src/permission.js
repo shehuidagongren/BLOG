@@ -18,6 +18,7 @@ const whiteList = ['/login', '/register',
   '/wayHome',  '/studyDiary',  '/studyGoal','/masterTechnique',
   '/milestoneHome',  '/aboutBlog',  '/updateBlog',  '/cooperation',
   '/test'
+  
 ]
 
 router.beforeEach((to, from, next) => {
